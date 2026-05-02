@@ -1,0 +1,17 @@
+{
+  "idf.pythonInstallPath": "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+  "idf.port": "/dev/tty.usbserial-0001",
+  "idf.customExtraVars": {
+    "IDF_TARGET": "esp32"
+  },
+  "clangd.path": "/Users/JimClark/.espressif/tools/esp-clang/15.0.0-23786128ae/esp-clang/bin/clangd",
+  "clangd.arguments": [
+    "--background-index",
+    "--query-driver=/Users/JimClark/.espressif/tools/xtensa-esp32-elf/esp-12.2.0_20230208/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc",
+    "--compile-commands-dir=/Users/JimClark/pentair-bridge/build"
+  ],
+  "idf.flashType": "UART",
+  "idf.espIdfPath": "/Users/JimClark/esp/esp-idf",
+  "idf.toolsPath": "/Users/JimClark/.espressif",
+  "idf.currentSetup": "/Users/JimClark/esp/esp-idf"
+}

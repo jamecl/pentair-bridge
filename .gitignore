@@ -1,0 +1,16 @@
+# ESP-IDF build artifacts
+build/
+sdkconfig.old
+
+# Dependencies (restored via idf.py)
+managed_components/
+
+# Secrets — never commit real credentials
+main/credentials.h
+
+# macOS
+.DS_Store
+
+# Backup files
+*.bak
+*.bak.txt
