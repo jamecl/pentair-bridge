@@ -11,234 +11,254 @@
   </text>
   <line x1="60" y1="42" x2="840" y2="42" stroke="#cccccc" stroke-width="1"/>
 
+  <!-- Arrow / marker defs -->
+  <defs>
+    <marker id="arrowGray" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#555555"/>
+    </marker>
+    <!-- Resistor symbol path (horizontal, 20px wide) centered on 0,0 -->
+    <!-- used via <use> with transform="translate(x,y)" -->
+  </defs>
+
   <!-- ═══════════════════════════════════════════════════════════════
        ESP32 DevKit component box  (left-center)
-       Box: x=80, y=80, w=240, h=380
+       Box: x=80, y=70, w=240, h=400
   ════════════════════════════════════════════════════════════════ -->
-  <rect x="80" y="80" width="240" height="380" rx="6" ry="6"
+  <rect x="80" y="70" width="240" height="400" rx="6" ry="6"
         fill="#f0f4ff" stroke="#3355aa" stroke-width="2"/>
   <!-- Component label -->
-  <text x="200" y="100" text-anchor="middle" font-size="11" font-weight="bold" fill="#3355aa">ESP32-WROOM-32</text>
-  <text x="200" y="115" text-anchor="middle" font-size="10" fill="#3355aa">DevKit (CP2102)</text>
+  <text x="200" y="90" text-anchor="middle" font-size="11" font-weight="bold" fill="#3355aa">ESP32-WROOM-32</text>
+  <text x="200" y="105" text-anchor="middle" font-size="10" fill="#3355aa">DevKit (CP2102)</text>
 
   <!-- USB-C symbol on left edge at top of board -->
-  <rect x="58" y="118" width="22" height="14" rx="4" ry="4"
+  <rect x="57" y="110" width="23" height="14" rx="4" ry="4"
         fill="#dddddd" stroke="#555555" stroke-width="1.5"/>
-  <text x="69" y="129" text-anchor="middle" font-size="7" fill="#333333">USB-C</text>
+  <text x="68" y="121" text-anchor="middle" font-size="7" fill="#333333">USB-C</text>
   <!-- USB power arrow into board -->
-  <line x1="80" y1="125" x2="92" y2="125" stroke="#555555" stroke-width="1.5" marker-end="url(#arrowGray)"/>
-
-  <!-- USB-C label above -->
-  <text x="55" y="112" text-anchor="middle" font-size="8" fill="#555555">5V IN</text>
+  <line x1="80" y1="117" x2="92" y2="117" stroke="#555555" stroke-width="1.5" marker-end="url(#arrowGray)"/>
+  <text x="55" y="106" text-anchor="middle" font-size="8" fill="#555555">5V IN</text>
 
   <!-- Divider line inside ESP32 box below title -->
-  <line x1="82" y1="122" x2="318" y2="122" stroke="#aabbdd" stroke-width="0.8" stroke-dasharray="4,3"/>
+  <line x1="82" y1="112" x2="318" y2="112" stroke="#aabbdd" stroke-width="0.8" stroke-dasharray="4,3"/>
+
+  <!-- 5V regulator note inside ESP32 box -->
+  <rect x="98" y="118" width="164" height="20" rx="3" fill="#dde8ff" stroke="#aabbdd" stroke-width="0.8"/>
+  <text x="180" y="132" text-anchor="middle" font-size="8" fill="#3355aa">USB-C 5V → VIN (5V out) + 3.3V LDO</text>
 
   <!-- ESP32 Pins on RIGHT edge — with connector dots -->
-  <!-- Pin rows: y positions for right-side pins -->
 
-  <!-- 3V3 pin -->
+  <!-- VIN (5V) pin -->
   <circle cx="320" cy="160" r="5" fill="#cc2222" stroke="#880000" stroke-width="1.5"/>
-  <text x="310" y="164" text-anchor="end" font-size="10" fill="#222">3V3</text>
+  <text x="310" y="157" text-anchor="end" font-size="10" fill="#222">VIN</text>
+  <text x="310" y="169" text-anchor="end" font-size="8" fill="#cc2222">(5V)</text>
 
   <!-- GND pin -->
-  <circle cx="320" cy="200" r="5" fill="#222222" stroke="#000000" stroke-width="1.5"/>
-  <text x="310" y="204" text-anchor="end" font-size="10" fill="#222">GND</text>
+  <circle cx="320" cy="210" r="5" fill="#222222" stroke="#000000" stroke-width="1.5"/>
+  <text x="310" y="214" text-anchor="end" font-size="10" fill="#222">GND</text>
+
+  <!-- 3V3 pin -->
+  <circle cx="320" cy="260" r="5" fill="#cc6600" stroke="#884400" stroke-width="1.5"/>
+  <text x="310" y="257" text-anchor="end" font-size="10" fill="#222">3V3</text>
+  <text x="310" y="269" text-anchor="end" font-size="8" fill="#cc6600">(3.3V)</text>
 
   <!-- GPIO 16 (RX2) pin -->
-  <circle cx="320" cy="250" r="5" fill="#1155cc" stroke="#003388" stroke-width="1.5"/>
-  <text x="310" y="254" text-anchor="end" font-size="10" fill="#222">GPIO 16</text>
-  <text x="310" y="266" text-anchor="end" font-size="8" fill="#5577cc">(UART2 RX)</text>
+  <circle cx="320" cy="320" r="5" fill="#1155cc" stroke="#003388" stroke-width="1.5"/>
+  <text x="310" y="317" text-anchor="end" font-size="10" fill="#222">GPIO 16</text>
+  <text x="310" y="329" text-anchor="end" font-size="8" fill="#5577cc">(UART2 RX)</text>
 
   <!-- GPIO 17 (TX2) pin -->
-  <circle cx="320" cy="300" r="5" fill="#1155cc" stroke="#003388" stroke-width="1.5"/>
-  <text x="310" y="304" text-anchor="end" font-size="10" fill="#222">GPIO 17</text>
-  <text x="310" y="316" text-anchor="end" font-size="8" fill="#5577cc">(UART2 TX)</text>
-
-  <!-- GPIO 4 pin (DE/RE) -->
-  <circle cx="320" cy="360" r="5" fill="#cc6600" stroke="#884400" stroke-width="1.5"/>
-  <text x="310" y="364" text-anchor="end" font-size="10" fill="#222">GPIO 4</text>
-  <text x="310" y="376" text-anchor="end" font-size="8" fill="#cc6600">(DE/RE ctrl)</text>
+  <circle cx="320" cy="390" r="5" fill="#1155cc" stroke="#003388" stroke-width="1.5"/>
+  <text x="310" y="387" text-anchor="end" font-size="10" fill="#222">GPIO 17</text>
+  <text x="310" y="399" text-anchor="end" font-size="8" fill="#5577cc">(UART2 TX)</text>
 
   <!-- ═══════════════════════════════════════════════════════════════
        MAX485 Module component box  (right-center)
-       Box: x=560, y=140, w=200, h=280
+       Box: x=560, y=120, w=200, h=320
   ════════════════════════════════════════════════════════════════ -->
-  <rect x="560" y="140" width="200" height="280" rx="6" ry="6"
+  <rect x="560" y="120" width="200" height="320" rx="6" ry="6"
         fill="#f5fff0" stroke="#227733" stroke-width="2"/>
-  <text x="660" y="162" text-anchor="middle" font-size="11" font-weight="bold" fill="#227733">ANMBEST MAX485</text>
-  <text x="660" y="176" text-anchor="middle" font-size="10" fill="#227733">RS-485 Transceiver</text>
-  <line x1="562" y1="182" x2="758" y2="182" stroke="#aaddbb" stroke-width="0.8" stroke-dasharray="4,3"/>
+  <text x="660" y="142" text-anchor="middle" font-size="11" font-weight="bold" fill="#227733">ANMBEST MAX485</text>
+  <text x="660" y="156" text-anchor="middle" font-size="10" fill="#227733">RS-485 Transceiver</text>
+  <line x1="562" y1="162" x2="758" y2="162" stroke="#aaddbb" stroke-width="0.8" stroke-dasharray="4,3"/>
 
   <!-- MAX485 left-side pins (face toward ESP32) -->
 
   <!-- VCC -->
-  <circle cx="560" cy="210" r="5" fill="#cc2222" stroke="#880000" stroke-width="1.5"/>
-  <text x="572" y="214" text-anchor="start" font-size="10" fill="#222">VCC</text>
+  <circle cx="560" cy="185" r="5" fill="#cc2222" stroke="#880000" stroke-width="1.5"/>
+  <text x="572" y="189" text-anchor="start" font-size="10" fill="#222">VCC</text>
+  <text x="572" y="200" text-anchor="start" font-size="8" fill="#cc2222">(5V)</text>
 
   <!-- GND -->
-  <circle cx="560" cy="245" r="5" fill="#222222" stroke="#000000" stroke-width="1.5"/>
-  <text x="572" y="249" text-anchor="start" font-size="10" fill="#222">GND</text>
+  <circle cx="560" cy="225" r="5" fill="#222222" stroke="#000000" stroke-width="1.5"/>
+  <text x="572" y="229" text-anchor="start" font-size="10" fill="#222">GND</text>
 
   <!-- DI -->
-  <circle cx="560" cy="280" r="5" fill="#1155cc" stroke="#003388" stroke-width="1.5"/>
-  <text x="572" y="284" text-anchor="start" font-size="10" fill="#222">DI</text>
-  <text x="572" y="295" text-anchor="start" font-size="8" fill="#5577cc">(Data In)</text>
+  <circle cx="560" cy="265" r="5" fill="#1155cc" stroke="#003388" stroke-width="1.5"/>
+  <text x="572" y="269" text-anchor="start" font-size="10" fill="#222">DI</text>
+  <text x="572" y="280" text-anchor="start" font-size="8" fill="#5577cc">(Data In)</text>
 
   <!-- DE -->
-  <circle cx="560" cy="320" r="5" fill="#cc6600" stroke="#884400" stroke-width="1.5"/>
-  <text x="572" y="324" text-anchor="start" font-size="10" fill="#222">DE</text>
+  <circle cx="560" cy="305" r="5" fill="#cc6600" stroke="#884400" stroke-width="1.5"/>
+  <text x="572" y="309" text-anchor="start" font-size="10" fill="#222">DE</text>
+  <text x="572" y="320" text-anchor="start" font-size="8" fill="#cc6600">(HIGH → always TX)</text>
 
   <!-- RE -->
-  <circle cx="560" cy="350" r="5" fill="#cc6600" stroke="#884400" stroke-width="1.5"/>
-  <text x="572" y="354" text-anchor="start" font-size="10" fill="#222">RE</text>
-  <text x="572" y="365" text-anchor="start" font-size="8" fill="#cc6600">(tied to DE)</text>
+  <circle cx="560" cy="345" r="5" fill="#888888" stroke="#444444" stroke-width="1.5"/>
+  <text x="572" y="349" text-anchor="start" font-size="10" fill="#222">RE</text>
+  <text x="572" y="360" text-anchor="start" font-size="8" fill="#666666">(LOW → always RX)</text>
 
   <!-- RO -->
   <circle cx="560" cy="390" r="5" fill="#1155cc" stroke="#003388" stroke-width="1.5"/>
   <text x="572" y="394" text-anchor="start" font-size="10" fill="#222">RO</text>
-  <text x="572" y="405" text-anchor="start" font-size="8" fill="#5577cc">(Receiver Out)</text>
+  <text x="572" y="405" text-anchor="start" font-size="8" fill="#5577cc">(Receiver Out, 5V)</text>
 
   <!-- MAX485 right-side screw terminals -->
   <!-- A terminal -->
-  <rect x="758" y="220" width="18" height="18" rx="2" fill="#e8ffe8" stroke="#227733" stroke-width="1.5"/>
-  <text x="767" y="233" text-anchor="middle" font-size="10" font-weight="bold" fill="#227733">A</text>
+  <rect x="758" y="198" width="18" height="18" rx="2" fill="#e8ffe8" stroke="#886600" stroke-width="1.5"/>
+  <text x="767" y="211" text-anchor="middle" font-size="10" font-weight="bold" fill="#886600">A</text>
 
   <!-- B terminal -->
-  <rect x="758" y="258" width="18" height="18" rx="2" fill="#e8ffe8" stroke="#227733" stroke-width="1.5"/>
-  <text x="767" y="271" text-anchor="middle" font-size="10" font-weight="bold" fill="#227733">B</text>
+  <rect x="758" y="236" width="18" height="18" rx="2" fill="#e8ffe8" stroke="#118833" stroke-width="1.5"/>
+  <text x="767" y="249" text-anchor="middle" font-size="10" font-weight="bold" fill="#118833">B</text>
 
   <!-- ═══════════════════════════════════════════════════════════════
-       Pentair RS-485 Bus termination block (far right)
+       Pentair PCBA block (far right)
   ════════════════════════════════════════════════════════════════ -->
-  <rect x="820" y="210" width="65" height="76" rx="5" ry="5"
+  <rect x="820" y="185" width="68" height="80" rx="5" ry="5"
         fill="#fffbe6" stroke="#886600" stroke-width="2"/>
-  <text x="852" y="228" text-anchor="middle" font-size="8" font-weight="bold" fill="#886600">Pentair</text>
-  <text x="852" y="240" text-anchor="middle" font-size="8" font-weight="bold" fill="#886600">RS-485</text>
-  <text x="852" y="252" text-anchor="middle" font-size="8" font-weight="bold" fill="#886600">Bus</text>
-  <!-- A label -->
-  <circle cx="826" cy="229" r="4" fill="#118833" stroke="#006622" stroke-width="1.5"/>
-  <text x="836" y="265" text-anchor="middle" font-size="8" fill="#886600">A ●</text>
-  <!-- B label -->
-  <circle cx="826" cy="267" r="4" fill="#118833" stroke="#006622" stroke-width="1.5"/>
-  <text x="836" y="278" text-anchor="middle" font-size="8" fill="#886600">B ●</text>
+  <text x="854" y="203" text-anchor="middle" font-size="8" font-weight="bold" fill="#886600">Pentair</text>
+  <text x="854" y="215" text-anchor="middle" font-size="8" font-weight="bold" fill="#886600">PCBA</text>
+  <text x="854" y="227" text-anchor="middle" font-size="8" fill="#886600">RS-485</text>
+  <!-- A connector dot -->
+  <circle cx="826" cy="207" r="4" fill="#886600" stroke="#664400" stroke-width="1.5"/>
+  <text x="835" y="243" text-anchor="start" font-size="8" fill="#886600">A</text>
+  <!-- B connector dot -->
+  <circle cx="826" cy="245" r="4" fill="#118833" stroke="#006622" stroke-width="1.5"/>
+  <text x="835" y="256" text-anchor="start" font-size="8" fill="#118833">B</text>
 
   <!-- ═══════════════════════════════════════════════════════════════
        WIRES
   ════════════════════════════════════════════════════════════════ -->
 
-  <!-- Arrow marker definitions -->
-  <defs>
-    <marker id="arrowGray" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#555555"/>
-    </marker>
-  </defs>
-
-  <!-- ── RED wire: ESP32 3V3 → MAX485 VCC ───────────────────── -->
-  <!-- Route: ESP32 pin (320,160) → elbow right → up → into MAX485 VCC (560,210) -->
-  <polyline points="320,160 460,160 460,210 560,210"
+  <!-- ── RED wire: ESP32 VIN (5V) → MAX485 VCC ──────────────── -->
+  <polyline points="320,160 460,160 460,185 560,185"
             fill="none" stroke="#cc2222" stroke-width="2.5"/>
-  <!-- Wire label -->
-  <text x="490" y="155" text-anchor="middle" font-size="9" fill="#cc2222" font-weight="bold">3.3V</text>
+  <text x="490" y="153" text-anchor="middle" font-size="9" fill="#cc2222" font-weight="bold">5V</text>
 
   <!-- ── BLACK wire: ESP32 GND → MAX485 GND ─────────────────── -->
-  <polyline points="320,200 450,200 450,245 560,245"
+  <polyline points="320,210 450,210 450,225 560,225"
             fill="none" stroke="#222222" stroke-width="2.5"/>
-  <text x="490" y="225" text-anchor="middle" font-size="9" fill="#333333" font-weight="bold">GND</text>
+  <text x="490" y="220" text-anchor="middle" font-size="9" fill="#333333" font-weight="bold">GND</text>
 
-  <!-- ── BLUE wire: GPIO 16 (RX) ← MAX485 RO ───────────────── -->
-  <!-- Route from GPIO16 pin right to MAX485 RO, offset slightly for clarity -->
-  <polyline points="320,250 430,250 430,390 560,390"
-            fill="none" stroke="#1155cc" stroke-width="2.5" stroke-dasharray="8,3"/>
-  <text x="380" y="380" text-anchor="middle" font-size="9" fill="#1155cc" font-weight="bold">RO → RX</text>
-
-  <!-- ── BLUE wire: GPIO 17 (TX) → MAX485 DI ───────────────── -->
-  <polyline points="320,300 440,300 440,280 560,280"
+  <!-- ── BLUE solid wire: GPIO 17 (TX) → MAX485 DI ─────────── -->
+  <polyline points="320,390 440,390 440,265 560,265"
             fill="none" stroke="#1155cc" stroke-width="2.5"/>
-  <text x="490" y="272" text-anchor="middle" font-size="9" fill="#1155cc" font-weight="bold">TX → DI</text>
+  <text x="400" y="383" text-anchor="middle" font-size="9" fill="#1155cc" font-weight="bold">TX→DI</text>
 
-  <!-- ── ORANGE wire: GPIO 4 → DE and RE (both) ────────────── -->
-  <!-- GPIO4 goes right, then splits to DE (320) and RE (350) -->
-  <polyline points="320,360 480,360 480,320 560,320"
+  <!-- ── ORANGE wire: ESP32 3V3 → MAX485 DE ────────────────── -->
+  <!-- Route: 3V3 pin (320,260) → right elbow → MAX485 DE (560,305) -->
+  <polyline points="320,260 470,260 470,305 560,305"
             fill="none" stroke="#cc6600" stroke-width="2.5"/>
-  <!-- Branch to RE -->
-  <polyline points="480,360 480,350 560,350"
-            fill="none" stroke="#cc6600" stroke-width="2.5"/>
-  <!-- DE/RE labels -->
-  <text x="510" y="310" text-anchor="middle" font-size="9" fill="#cc6600" font-weight="bold">DE</text>
-  <text x="510" y="346" text-anchor="middle" font-size="9" fill="#cc6600" font-weight="bold">RE</text>
-  <text x="350" y="355" text-anchor="start" font-size="9" fill="#cc6600" font-weight="bold">DIR ctrl</text>
+  <text x="415" y="254" text-anchor="middle" font-size="9" fill="#cc6600" font-weight="bold">3.3V→DE</text>
 
-  <!-- Tie dot at branch point for DE/RE -->
-  <circle cx="480" cy="360" r="4" fill="#cc6600"/>
+  <!-- ── GRAY wire: ESP32 GND → MAX485 RE ──────────────────── -->
+  <!-- Branch from GND line elbow at (450,210) → down → RE (560,345) -->
+  <!-- Independent run from GND pin for clarity -->
+  <polyline points="320,210 442,210 442,345 560,345"
+            fill="none" stroke="#888888" stroke-width="2.5"/>
+  <text x="400" y="340" text-anchor="middle" font-size="9" fill="#666666" font-weight="bold">GND→RE</text>
+  <!-- Tie dot at GND branch -->
+  <circle cx="442" cy="210" r="4" fill="#333333"/>
+  <!-- Tie dot where main black wire also passes through 450,210 -->
 
-  <!-- ── GREEN wires: MAX485 A/B → Pentair bus ─────────────── -->
-  <!-- A terminal at (776, 229) → Pentair A (826, 229) -->
-  <line x1="776" y1="229" x2="826" y2="229"
+  <!-- ── BLUE dashed wire: MAX485 RO → resistor → GPIO 16 ──── -->
+  <!-- RO pin at (560,390), route left to resistor then to GPIO16 at (320,320) -->
+  <!-- Wire from RO left to resistor body -->
+  <line x1="560" y1="390" x2="420" y2="390"
+        fill="none" stroke="#1155cc" stroke-width="2.5" stroke-dasharray="8,3"/>
+  <!-- Resistor symbol at ~(400,390): little zigzag box -->
+  <rect x="392" y="384" width="28" height="12" rx="2"
+        fill="white" stroke="#1155cc" stroke-width="2"/>
+  <text x="406" y="394" text-anchor="middle" font-size="7" fill="#1155cc">R</text>
+  <!-- Wire continuing from resistor left to elbow, then up to GPIO16 -->
+  <line x1="392" y1="390" x2="360" y2="390"
+        fill="none" stroke="#1155cc" stroke-width="2.5" stroke-dasharray="8,3"/>
+  <polyline points="360,390 360,320 320,320"
+            fill="none" stroke="#1155cc" stroke-width="2.5" stroke-dasharray="8,3"/>
+  <text x="340" y="358" text-anchor="middle" font-size="9" fill="#1155cc" font-weight="bold">RO→RX</text>
+
+  <!-- ── YELLOW wire: MAX485 A terminal → Pentair PCBA A ─────── -->
+  <line x1="776" y1="207" x2="826" y2="207"
+        stroke="#cc9900" stroke-width="2.5"/>
+  <text x="800" y="200" text-anchor="middle" font-size="9" fill="#886600" font-weight="bold">A (yellow)</text>
+
+  <!-- ── GREEN wire: MAX485 B terminal → Pentair PCBA B ─────── -->
+  <line x1="776" y1="245" x2="826" y2="245"
         stroke="#118833" stroke-width="2.5"/>
-  <text x="800" y="222" text-anchor="middle" font-size="9" fill="#118833" font-weight="bold">A</text>
-
-  <!-- B terminal at (776, 267) → Pentair B (826, 267) -->
-  <line x1="776" y1="267" x2="826" y2="267"
-        stroke="#118833" stroke-width="2.5"/>
-  <text x="800" y="260" text-anchor="middle" font-size="9" fill="#118833" font-weight="bold">B</text>
+  <text x="800" y="238" text-anchor="middle" font-size="9" fill="#118833" font-weight="bold">B (green)</text>
 
   <!-- ═══════════════════════════════════════════════════════════════
-       USB-C Power annotation arrow (decorative, top-left)
+       USB-C Power annotation (top-left decorative)
   ════════════════════════════════════════════════════════════════ -->
-  <text x="35" y="102" font-size="9" fill="#555555" font-weight="bold">USB-C</text>
-  <text x="35" y="113" font-size="9" fill="#555555">5V DC</text>
-  <line x1="58" y1="107" x2="58" y2="120" stroke="#555555" stroke-width="1.5" marker-end="url(#arrowGray)"/>
-
-  <!-- 3.3V regulator note inside ESP32 box -->
-  <rect x="100" y="130" width="160" height="20" rx="3" fill="#dde8ff" stroke="#aabbdd" stroke-width="0.8"/>
-  <text x="180" y="144" text-anchor="middle" font-size="8" fill="#3355aa">Onboard 3.3V LDO regulator</text>
+  <text x="34" y="95" font-size="9" fill="#555555" font-weight="bold">USB-C</text>
+  <text x="34" y="106" font-size="9" fill="#555555">5V DC</text>
+  <line x1="57" y1="100" x2="57" y2="112" stroke="#555555" stroke-width="1.5" marker-end="url(#arrowGray)"/>
 
   <!-- ═══════════════════════════════════════════════════════════════
        LEGEND  (bottom-left)
   ════════════════════════════════════════════════════════════════ -->
-  <rect x="60" y="495" width="320" height="90" rx="5" ry="5"
+  <rect x="60" y="492" width="340" height="98" rx="5" ry="5"
         fill="#f9f9f9" stroke="#aaaaaa" stroke-width="1.2"/>
-  <text x="75" y="513" font-size="10" font-weight="bold" fill="#333">Wire Color Legend</text>
+  <text x="75" y="510" font-size="10" font-weight="bold" fill="#333">Wire Color Legend</text>
 
   <!-- Red -->
-  <line x1="75" y1="528" x2="110" y2="528" stroke="#cc2222" stroke-width="3"/>
-  <text x="116" y="532" font-size="10" fill="#333">Power (3.3V)</text>
+  <line x1="75" y1="525" x2="110" y2="525" stroke="#cc2222" stroke-width="3"/>
+  <text x="116" y="529" font-size="10" fill="#333">Power — 5V (VIN)</text>
 
   <!-- Black -->
-  <line x1="75" y1="547" x2="110" y2="547" stroke="#222222" stroke-width="3"/>
-  <text x="116" y="551" font-size="10" fill="#333">Ground (GND)</text>
+  <line x1="75" y1="542" x2="110" y2="542" stroke="#222222" stroke-width="3"/>
+  <text x="116" y="546" font-size="10" fill="#333">Ground (GND)</text>
 
   <!-- Blue solid -->
-  <line x1="75" y1="566" x2="110" y2="566" stroke="#1155cc" stroke-width="3"/>
-  <text x="116" y="570" font-size="10" fill="#333">Data — TX/DI (solid)</text>
+  <line x1="75" y1="559" x2="110" y2="559" stroke="#1155cc" stroke-width="3"/>
+  <text x="116" y="563" font-size="10" fill="#333">Data — TX→DI (solid)</text>
 
   <!-- Blue dashed -->
-  <line x1="210" y1="528" x2="245" y2="528" stroke="#1155cc" stroke-width="3" stroke-dasharray="6,3"/>
-  <text x="251" y="532" font-size="10" fill="#333">Data — RO/RX (dashed)</text>
+  <line x1="75" y1="576" x2="110" y2="576" stroke="#1155cc" stroke-width="3" stroke-dasharray="6,3"/>
+  <text x="116" y="580" font-size="10" fill="#333">Data — RO→RX (dashed, w/ resistor)</text>
 
   <!-- Orange -->
-  <line x1="210" y1="547" x2="245" y2="547" stroke="#cc6600" stroke-width="3"/>
-  <text x="251" y="551" font-size="10" fill="#333">Direction ctrl (DE/RE)</text>
+  <line x1="230" y1="525" x2="265" y2="525" stroke="#cc6600" stroke-width="3"/>
+  <text x="271" y="529" font-size="10" fill="#333">DE tied to 3.3V</text>
+
+  <!-- Gray -->
+  <line x1="230" y1="542" x2="265" y2="542" stroke="#888888" stroke-width="3"/>
+  <text x="271" y="546" font-size="10" fill="#333">RE tied to GND</text>
+
+  <!-- Yellow -->
+  <line x1="230" y1="559" x2="265" y2="559" stroke="#cc9900" stroke-width="3"/>
+  <text x="271" y="563" font-size="10" fill="#333">A — RS-485 bus (yellow)</text>
 
   <!-- Green -->
-  <line x1="210" y1="566" x2="245" y2="566" stroke="#118833" stroke-width="3"/>
-  <text x="251" y="570" font-size="10" fill="#333">RS-485 Bus (A/B)</text>
+  <line x1="230" y1="576" x2="265" y2="576" stroke="#118833" stroke-width="3"/>
+  <text x="271" y="580" font-size="10" fill="#333">B — RS-485 bus (green)</text>
 
   <!-- ═══════════════════════════════════════════════════════════════
        Notes box (bottom-right)
   ════════════════════════════════════════════════════════════════ -->
-  <rect x="400" y="495" width="440" height="90" rx="5" ry="5"
+  <rect x="415" y="460" width="468" height="128" rx="5" ry="5"
         fill="#fffdf0" stroke="#ccbb88" stroke-width="1.2"/>
-  <text x="415" y="513" font-size="10" font-weight="bold" fill="#664400">Notes</text>
-  <text x="415" y="529" font-size="9" fill="#444">• DE and RE are tied together — single GPIO 4 controls direction.</text>
-  <text x="415" y="544" font-size="9" fill="#444">• MAX485 module powered from ESP32 3V3 pin (3.3V logic, 3.3V supply).</text>
-  <text x="415" y="559" font-size="9" fill="#444">• USB-C 5V powers ESP32; onboard LDO provides regulated 3.3V rail.</text>
-  <text x="415" y="574" font-size="9" fill="#444">• A/B terminals connect to existing Pentair RS-485 pool bus wiring.</text>
+  <text x="430" y="478" font-size="10" font-weight="bold" fill="#664400">Notes</text>
+  <text x="430" y="494" font-size="9" fill="#444">• RE/DE hardwired (receive-only config) — GPIO 4 not used physically.</text>
+  <text x="430" y="509" font-size="9" fill="#444">• Series resistor on RO protects ESP32 3.3V GPIO from 5V MAX485 output.</text>
+  <text x="430" y="524" font-size="9" fill="#444">• A=Yellow wire, B=Green wire on Pentair PCBA RS-485 connector.</text>
+  <text x="430" y="539" font-size="9" fill="#444">• USB-C 5V powers ESP32; ESP32 VIN (5V) pin powers MAX485 VCC.</text>
+  <text x="430" y="554" font-size="9" fill="#444">• MAX485 VCC=5V; logic levels on A/B bus are 5V differential.</text>
+  <text x="430" y="569" font-size="9" fill="#444">• DE=HIGH (always), RE=LOW (always) → half-duplex receive-dominant mode.</text>
 
   <!-- Bottom caption -->
   <text x="450" y="597" text-anchor="middle" font-size="8" fill="#999999">
-    ESP32 UART2: TX=GPIO17, RX=GPIO16 | RS-485 direction: GPIO4 (DE+RE)
+    ESP32 UART2: TX=GPIO17 (DI), RX=GPIO16 (RO via resistor) | DE→3.3V, RE→GND (hardwired)
   </text>
 
 </svg>
