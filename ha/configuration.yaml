@@ -1,0 +1,62 @@
+# Pentair Pool RS-485 Bridge — Home Assistant configuration
+#
+# Add this to your configuration.yaml (or include it via !include)
+#
+# Notes:
+#   - Update the resource IP if the ESP32 address changes (currently 192.168.0.30)
+#   - The ESP32 MAC address is 68:25:dd:49:1d:18 — set a DHCP reservation in your
+#     router to keep the IP stable
+#   - scan_interval is 60 seconds — lower it for faster updates, but the ESP32
+#     refreshes RS-485 data continuously so 60s is fine for pool monitoring
+#   - If sensors show unavailable, check that the ESP32 is on the network at
+#     http://192.168.0.30 and the /api/status endpoint returns valid JSON
+
+rest:
+  - resource: http://192.168.0.30/api/status
+    scan_interval: 60
+    sensor:
+      - name: "Pool Temperature"
+        value_template: "{{ value_json.main.pool_f }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      - name: "Pool Air Temperature"
+        value_template: "{{ value_json.main.air_f }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      - name: "Spa Temperature"
+        value_template: "{{ value_json.main.spa_f }}"
+        unit_of_measurement: "°F"
+        device_class: temperature
+
+      - name: "Pool Pump RPM"
+        value_template: "{{ value_json.pump.rpm }}"
+        unit_of_measurement: "RPM"
+        icon: mdi:pump
+
+      - name: "Pool Pump Power"
+        value_template: "{{ value_json.pump.watts }}"
+        unit_of_measurement: "W"
+        device_class: power
+
+    binary_sensor:
+      - name: "Pool Circuit"
+        value_template: "{{ value_json.main.pool_on }}"
+        device_class: running
+
+      - name: "Pool Pump Running"
+        value_template: "{{ value_json.pump.valid and value_json.pump.rpm > 0 }}"
+        device_class: running
+
+      - name: "Pool Cleaner"
+        value_template: "{{ value_json.main.cleaner }}"
+        device_class: running
+
+      - name: "Pool Light"
+        value_template: "{{ value_json.main.pool_light }}"
+        device_class: light
+
+      - name: "Water Feature"
+        value_template: "{{ value_json.main.water_feature }}"
+        device_class: running
