@@ -68,8 +68,8 @@
 
 // ------------------------------ DATA ------------------------------------
 #define STREAM_BUF   1024
-#define FRAME_MAX    512
-#define HISTORY_MAX  200
+#define FRAME_MAX    128
+#define HISTORY_MAX  50
 #define PREVIEW_MAX  64
 
 typedef struct {
