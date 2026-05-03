@@ -12,9 +12,9 @@ ESP32-based bridge that monitors Pentair pool equipment via RS-485 and exposes t
 
 ## Hardware
 
-- ESP32-WROOM-32 DevKit (CP2102), MAC: `68:25:dd:49:1d:18`, reserved IP: `192.168.0.30`
+- ESP32-WROOM-32 DevKit (CP2102), MAC: `68:25:dd:45:f2:e4`, reserved IP: `192.168.0.30`
 - ANMBEST MAX485 RS-485 transceiver module, connected to UART2 (TX=17, RX=16, RTS=4)
-- USB-C 5V power supply (the original failed due to a power surge — replaced)
+- **Recommended power supply: Meanwell HDR-15-5** (DIN rail mount, 5VDC, built-in noise filtering) — USB chargers are unreliable in the noisy electrical environment of a pool equipment panel and can cause flash corruption on power cycling
 
 See the [wiring diagram](docs/wiring-diagram.svg) for full connection details.
 

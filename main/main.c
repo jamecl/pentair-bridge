@@ -722,12 +722,13 @@ void app_main(void){
     ESP_LOGI(TAG, "Watchdog timer configured (30s timeout)");
 
     esp_err_t nvs = nvs_flash_init();
-    if (nvs == ESP_ERR_NVS_NO_FREE_PAGES || nvs == ESP_ERR_NVS_NEW_VERSION_FOUND){
+    if (nvs != ESP_OK){
+        ESP_LOGW(TAG, "NVS init failed (%s), erasing and reinitializing", esp_err_to_name(nvs));
         TRY("nvs", nvs_flash_erase());
         nvs = nvs_flash_init();
     }
     if (nvs != ESP_OK){
-        ESP_LOGE(TAG, "[nvs] init failed: %s (0x%x)", esp_err_to_name(nvs), (unsigned)nvs);
+        ESP_LOGE(TAG, "[nvs] init failed after erase: %s (0x%x)", esp_err_to_name(nvs), (unsigned)nvs);
     }
 
     wifi_start();
