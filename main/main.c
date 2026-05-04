@@ -672,7 +672,10 @@ static void wifi_event_handler(void* arg, esp_event_base_t base, int32_t id, voi
         }
     } else if (base == WIFI_EVENT && id == WIFI_EVENT_STA_CONNECTED){
         wifi_event_sta_connected_t *event = (wifi_event_sta_connected_t*) data;
-        ESP_LOGI(TAG, "WiFi connected to AP, SSID:%s, Channel:%d", event->ssid, event->channel);
+        ESP_LOGI(TAG, "WiFi connected to AP, SSID:%s, Channel:%d, BSSID:%02x:%02x:%02x:%02x:%02x:%02x",
+                 event->ssid, event->channel,
+                 event->bssid[0], event->bssid[1], event->bssid[2],
+                 event->bssid[3], event->bssid[4], event->bssid[5]);
     } else if (base == IP_EVENT && id == IP_EVENT_STA_GOT_IP){
         ip_event_got_ip_t *e = (ip_event_got_ip_t*)data;
         ESP_LOGI(TAG, "Got IP: " IPSTR, IP2STR(&e->ip_info.ip));
@@ -685,7 +688,8 @@ static void wifi_start(void){
 
     TRY("wifi", esp_netif_init());
     TRY("wifi", esp_event_loop_create_default());
-    esp_netif_create_default_wifi_sta();
+    esp_netif_t *sta_netif = esp_netif_create_default_wifi_sta();
+    esp_netif_set_hostname(sta_netif, "ESP-Pool-Monitor");
 
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
     TRY("wifi", esp_wifi_init(&cfg));
