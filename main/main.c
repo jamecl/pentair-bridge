@@ -624,9 +624,10 @@ static httpd_handle_t start_http(void){
     httpd_config_t cfg = HTTPD_DEFAULT_CONFIG();
     cfg.server_port = 80;
     cfg.stack_size  = 12288;
-    cfg.recv_wait_timeout = 30;
-    cfg.send_wait_timeout = 30;
+    cfg.recv_wait_timeout = 10;
+    cfg.send_wait_timeout = 10;
     cfg.lru_purge_enable = true;
+    cfg.max_open_sockets = 4;
 
     httpd_handle_t server = NULL;
     esp_err_t e = httpd_start(&server, &cfg);
